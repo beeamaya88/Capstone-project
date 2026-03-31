@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+
+const baseUrl = import.meta.env.VITE_API_URL;
 const userStore = create(
   persist(
     (set) => ({
@@ -21,7 +23,7 @@ const userStore = create(
       login: async (email, password) => {
         set({ loading: true, error: null });
         try {
-          const response = await fetch("http://localhost:3500/user/signin", {
+          const response = await fetch(`${baseUrl}/user/signin`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -60,7 +62,7 @@ const userStore = create(
       signup: async (userData) => {
         set({ loading: true, error: null });
         try {
-          const response = await fetch("http://localhost:3500/user/signup", {
+          const response = await fetch(`${baseUrl}/user/signup`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

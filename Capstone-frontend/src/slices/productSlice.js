@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 
+const baseUrl = import.meta.env.VITE_API_URL;
 const productStore = create((set, get) => ({
   // State
   products: [],
@@ -15,7 +16,7 @@ const productStore = create((set, get) => ({
   fetchProducts: async (category = 'all', search = '') => {
     set({ loading: true, error: null });
     try {
-      let url = 'http://localhost:3500/api/products';
+      let url = `${baseUrl}/api/products/api/products`;
       const params = new URLSearchParams();
       if (category && category !== 'all') params.append('category', category);
       if (search) params.append('search', search);
@@ -44,7 +45,7 @@ const productStore = create((set, get) => ({
   fetchProductById: async (id) => {
     set({ loading: true, error: null });
     try {
-      const response = await fetch(`http://localhost:3500/api/products/${id}`);
+      const response = await fetch (`${baseUrl}/api/products/api/products/${id}`);
       if (!response.ok) {
         throw new Error('Product not found');
       }
@@ -69,7 +70,7 @@ const productStore = create((set, get) => ({
   addProduct: async (formData) => {
     set({ loading: true, error: null });
     try {
-      const response = await fetch('http://localhost:3500/api/products/add', {
+      const response = await fetch (`${baseUrl}/api/products/`, {
         method: 'POST',
         body: formData,
       });
@@ -107,7 +108,7 @@ const productStore = create((set, get) => ({
   updateProduct: async (id, productData) => {
     set({ loading: true, error: null });
     try {
-      const response = await fetch(`http://localhost:3500/api/products/${id}`, {
+      const response = await fetch(`${baseUrl}/api/products/api/products/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -142,7 +143,7 @@ const productStore = create((set, get) => ({
   deleteProduct: async (id) => {
     set({ loading: true, error: null });
     try {
-      const response = await fetch(`http://localhost:3500/api/products/${id}`, {
+      const response = await fetch(`${baseUrl}/api/products/api/products${id}`, {
         method: 'DELETE',
       });
 

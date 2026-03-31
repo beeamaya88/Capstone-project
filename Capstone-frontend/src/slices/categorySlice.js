@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+
 const categoryStore = create(
   persist(
     (set) => ({
@@ -14,7 +15,7 @@ const categoryStore = create(
         set({ loading: true, error: null });
         try {
           // You'll need to create this backend route
-          const response = await fetch('http://localhost:3500/api/categories');
+          const response = await fetch('${baseUrl}/api/categories');
           const data = await response.json();
           set({ categories: data, loading: false });
         } catch (err) {

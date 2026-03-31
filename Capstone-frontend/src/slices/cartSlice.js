@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 
+const baseUrl = import.meta.env.VITE_API_URL;
 const cartStore = create((set) => ({  // Removed 'get' since it's not used
   // State
   cart: null,
@@ -18,7 +19,7 @@ const cartStore = create((set) => ({  // Removed 'get' since it's not used
     
     set({ loading: true, error: null });
     try {
-      const response = await fetch(`http://localhost:3500/api/cart/${userId}`);
+      const response = await fetch(`${baseUrl}/api/cart/${userId}`);
       const data = await response.json();
       
       // Calculate item count and subtotal
@@ -49,7 +50,7 @@ const cartStore = create((set) => ({  // Removed 'get' since it's not used
   addToCart: async (userId, productData) => {
     set({ loading: true, error: null });
     try {
-      const response = await fetch(`http://localhost:3500/api/cart/${userId}/add`, {
+      const response = await fetch(`${baseUrl}/api/cart/${userId}/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -100,7 +101,7 @@ const cartStore = create((set) => ({  // Removed 'get' since it's not used
   updateCartItem: async (userId, itemId, quantity) => {
     set({ loading: true, error: null });
     try {
-      const response = await fetch(`http://localhost:3500/api/cart/${userId}/item/${itemId}`, {
+      const response = await fetch(`${baseUrl}/api/cart/${userId}/item/${itemId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -151,7 +152,7 @@ const cartStore = create((set) => ({  // Removed 'get' since it's not used
   removeFromCart: async (userId, itemId) => {
     set({ loading: true, error: null });
     try {
-      const response = await fetch(`http://localhost:3500/api/cart/${userId}/item/${itemId}`, {
+      const response = await fetch(`${baseUrl}/api/cart/${userId}/item/${itemId}`, {
         method: 'DELETE',
       });
 
@@ -198,7 +199,7 @@ const cartStore = create((set) => ({  // Removed 'get' since it's not used
   clearCart: async (userId) => {
     set({ loading: true, error: null });
     try {
-      const response = await fetch(`http://localhost:3500/api/cart/${userId}/clear`, {
+      const response = await fetch(`${baseUrl}/api/cart/${userId}/clear`, {
         method: 'DELETE',
       });
 
