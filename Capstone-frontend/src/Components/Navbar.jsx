@@ -14,7 +14,7 @@ import gardeningBook from '../assets/Navigation Images/gardeningbook.jpg'
 import gardenLearner from '../assets/Navigation Images/gardenlearner.jpg'
 
 // Import Root & Soil logo
-import wildBudLogo from '../assets/WildBud.svg'
+import wildBudLogo from '../assets/Wildbud.svg'
 
 // Logout Confirmation Modal Component
 const LogoutModal = ({ isOpen, onClose, onConfirm }) => {
