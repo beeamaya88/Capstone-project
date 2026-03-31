@@ -16,7 +16,7 @@ const productStore = create((set, get) => ({
   fetchProducts: async (category = 'all', search = '') => {
     set({ loading: true, error: null });
     try {
-      let url = `${baseUrl}/api/products/api/products`;
+      let url = `${baseUrl}/api/products`;
       const params = new URLSearchParams();
       if (category && category !== 'all') params.append('category', category);
       if (search) params.append('search', search);
@@ -45,7 +45,7 @@ const productStore = create((set, get) => ({
   fetchProductById: async (id) => {
     set({ loading: true, error: null });
     try {
-      const response = await fetch (`${baseUrl}/api/products/api/products/${id}`);
+      const response = await fetch (`${baseUrl}/api/products/${id}`);
       if (!response.ok) {
         throw new Error('Product not found');
       }
@@ -108,7 +108,7 @@ const productStore = create((set, get) => ({
   updateProduct: async (id, productData) => {
     set({ loading: true, error: null });
     try {
-      const response = await fetch(`${baseUrl}/api/products/api/products/${id}`, {
+      const response = await fetch(`${baseUrl}/api/products/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -143,7 +143,7 @@ const productStore = create((set, get) => ({
   deleteProduct: async (id) => {
     set({ loading: true, error: null });
     try {
-      const response = await fetch(`${baseUrl}/api/products/api/products${id}`, {
+      const response = await fetch(`${baseUrl}/api/products${id}`, {
         method: 'DELETE',
       });
 
