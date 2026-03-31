@@ -14,7 +14,7 @@ import gardeningBook from '../assets/Navigation Images/gardeningbook.jpg'
 import gardenLearner from '../assets/Navigation Images/gardenlearner.jpg'
 
 // Import Root & Soil logo
-import wildBudLogo from '../assets/Wildbud.svg'
+import rootsSoilLogo from '../assets/Rootssoil.svg'
 
 // Logout Confirmation Modal Component
 const LogoutModal = ({ isOpen, onClose, onConfirm }) => {
@@ -249,9 +249,9 @@ export default function Navbar({ openSignin, openSignup }) {
                 <Link to="/">
                   <span className="sr-only">Root & Soil</span>
                   <img
-                    src={wildBudLogo}
+                    src={rootsSoilLogo}
                     className="h-4 w-auto"
-                    alt="Wild Bud Logo"
+                    alt="Roots and Soi Logo"
                   />
                 </Link>
               </div>
@@ -566,8 +566,8 @@ export default function Navbar({ openSignin, openSignup }) {
               <Link to="/" className="flex-shrink-0" onClick={() => setMobileOpen(false)}>
                 <img
                   className="h-8 w-auto"
-                  src={wildBudLogo}
-                  alt="Wild Bud Logo"
+                  src={rootsSoilLogo}
+                  alt="Roots and Soil Logo"
                 />
               </Link>
 
